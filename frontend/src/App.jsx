@@ -1,12 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/common/Login';
+<<<<<<< HEAD
 import Welcome from './pages/common/Welcome';
 import StudentRegister from './pages/common/StudentRegister';
 import TeacherRegister from './pages/common/TeacherRegister';
 import ForgotPassword from './pages/common/ForgotPassword';
 import ResetPassword from './pages/common/ResetPassword';
 import AdminLogin from './pages/common/AdminLogin';
+=======
+import Register from './pages/common/Register';
+>>>>>>> 5275d5695f3ce52e16f80362a1fb0bb3568fd146
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminStudents from './pages/admin/AdminStudents';
 import AdminTeachers from './pages/admin/AdminTeachers';
@@ -39,6 +43,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
+<<<<<<< HEAD
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/register/student" element={<StudentRegister />} />
         <Route path="/register/teacher" element={<TeacherRegister />} />
@@ -60,6 +65,24 @@ function App() {
           </DashboardLayout>
         } />
 
+=======
+        <Route path="/register" element={<Register />} />
+
+        {/* Admin Routes */}
+        <Route path="/admin/*" element={
+          <DashboardLayout role="admin">
+            <Routes>
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="students" element={<AdminStudents />} />
+              <Route path="teachers" element={<AdminTeachers />} />
+              <Route path="fees" element={<AdminFees />} />
+              <Route path="timetable" element={<AdminTimetable />} />
+              <Route path="approvals" element={<AdminApprovals />} />
+            </Routes>
+          </DashboardLayout>
+        } />
+
+>>>>>>> 5275d5695f3ce52e16f80362a1fb0bb3568fd146
         {/* Teacher Routes */}
         <Route path="/teacher/*" element={
           <DashboardLayout role="teacher">
@@ -83,7 +106,11 @@ function App() {
           </DashboardLayout>
         } />
 
+<<<<<<< HEAD
         <Route path="/" element={<Welcome />} />
+=======
+        <Route path="/" element={<Navigate to="/login" replace />} />
+>>>>>>> 5275d5695f3ce52e16f80362a1fb0bb3568fd146
       </Routes>
     </Router>
   );

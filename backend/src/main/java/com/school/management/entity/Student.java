@@ -21,6 +21,7 @@ public class Student {
     @ManyToOne
     @JoinColumn(name = "class_id")
     private ClassRoom classRoom;
+<<<<<<< HEAD
 
     public Student() {
 
@@ -39,5 +40,7 @@ public class Student {
         return id;
     }
 
+=======
+>>>>>>> 5275d5695f3ce52e16f80362a1fb0bb3568fd146
 
 }

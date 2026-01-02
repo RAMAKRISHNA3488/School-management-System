@@ -2,18 +2,30 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
+<<<<<<< HEAD
     const [role, setRole] = useState('student');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+=======
+    const [role, setRole] = useState('admin');
+    const [email, setEmail] = useState(''); // using email for student/teacher
+    const [password, setPassword] = useState('');
+>>>>>>> 5275d5695f3ce52e16f80362a1fb0bb3568fd146
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
         e.preventDefault();
+<<<<<<< HEAD
         setLoading(true);
         setError('');
+=======
+
+        // Quick admin bypass as requested to match "fixed logins" behavior if API is down or just for simplicity
+        // But implementation plan says use API. So we try API first.
+>>>>>>> 5275d5695f3ce52e16f80362a1fb0bb3568fd146
 
         try {
             const res = await fetch('http://localhost:8080/api/auth/login', {
@@ -25,6 +37,7 @@ const Login = () => {
             const data = await res.json();
 
             if (res.ok) {
+<<<<<<< HEAD
                 localStorage.setItem('user', JSON.stringify(data));
                 navigate(`/${data.role}/dashboard`);
             } else {
@@ -33,17 +46,33 @@ const Login = () => {
         } catch (err) {
             console.error("Login error", err);
             // Fallback for Admin if backend not running
+=======
+                // Store user info if needed
+                localStorage.setItem('user', JSON.stringify(data));
+                navigate(`/${data.role}/dashboard`);
+            } else {
+                alert(data.message || "Login Failed");
+            }
+        } catch (err) {
+            console.error("Login error", err);
+            // Fallback for Admin if backend not running (Development convenience, optional)
+>>>>>>> 5275d5695f3ce52e16f80362a1fb0bb3568fd146
             if (role === 'admin' && email === 'admin' && password === 'admin') {
                 navigate('/admin/dashboard');
                 return;
             }
+<<<<<<< HEAD
             setError("Unable to connect to server. Please try again later.");
         } finally {
             setLoading(false);
+=======
+            alert("Error connecting to server");
+>>>>>>> 5275d5695f3ce52e16f80362a1fb0bb3568fd146
         }
     };
 
     return (
+<<<<<<< HEAD
         <div className="auth-container">
             <div className="auth-card">
                 <div className="auth-header">
@@ -165,6 +194,50 @@ const Login = () => {
                                 </Link>
                             </p>
                         </>
+=======
+        <div className="h-screen w-full flex items-center justify-center bg-dark">
+            <div className="card w-full max-w-md glass">
+                <h1 className="text-2xl font-bold text-center mb-6">Welcome Back</h1>
+                <form onSubmit={handleLogin}>
+                    <div className="mb-4">
+                        <label className="block text-muted mb-2">Login As</label>
+                        <select
+                            className="input"
+                            value={role}
+                            onChange={(e) => setRole(e.target.value)}
+                        >
+                            <option value="admin">Admin</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="student">Student</option>
+                        </select>
+                    </div>
+                    <div className="mb-4">
+                        <label className="block text-muted mb-2">{role === 'admin' ? 'Username' : 'Email'}</label>
+                        <input
+                            type="text"
+                            className="input"
+                            placeholder={role === 'admin' ? 'admin' : 'user@example.com'}
+                            value={email}
+                            onChange={e => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="mb-6">
+                        <label className="block text-muted mb-2">Password</label>
+                        <input
+                            type="password"
+                            className="input"
+                            placeholder="Enter password"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <button type="submit" className="btn w-full mb-4">Login</button>
+
+                    {role !== 'admin' && (
+                        <p className="text-center text-muted text-sm">
+                            Don't have an account? <Link to="/register" className="text-primary hover:underline">Register here</Link>
+                        </p>
+>>>>>>> 5275d5695f3ce52e16f80362a1fb0bb3568fd146
                     )}
                 </form>
             </div>
