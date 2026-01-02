@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-=======
-import { Link, useLocation } from 'react-router-dom';
->>>>>>> 5275d5695f3ce52e16f80362a1fb0bb3568fd146
 
 const Sidebar = ({ role }) => {
     const location = useLocation();
@@ -31,7 +27,6 @@ const Sidebar = ({ role }) => {
     };
 
     const roleLinks = links[role] || [];
-<<<<<<< HEAD
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -48,8 +43,6 @@ const Sidebar = ({ role }) => {
         }
     };
 
-=======
->>>>>>> 5275d5695f3ce52e16f80362a1fb0bb3568fd146
 
     return (
         <div className="sidebar p-4 pb-0">
@@ -73,17 +66,12 @@ const Sidebar = ({ role }) => {
             </nav>
 
             <div className="absolute bottom-4 left-4 right-4">
-<<<<<<< HEAD
                 <div
                     className="nav-item cursor-pointer"
                     style={{ color: 'var(--secondary)' }}
                     onClick={handleLogout}
                 >
                     🚪 Logout
-=======
-                <div className="nav-item cursor-pointer" style={{ color: 'var(--secondary)' }}>
-                    Logout
->>>>>>> 5275d5695f3ce52e16f80362a1fb0bb3568fd146
                 </div>
             </div>
         </div>
