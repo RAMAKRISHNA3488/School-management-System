@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ role }) => {
     const location = useLocation();
@@ -27,6 +27,22 @@ const Sidebar = ({ role }) => {
     };
 
     const roleLinks = links[role] || [];
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        // Clear all stored data
+        localStorage.removeItem('user');
+        localStorage.removeItem('adminToken');
+        localStorage.clear();
+
+        // Navigate to appropriate login page
+        if (role === 'admin') {
+            navigate('/admin/login');
+        } else {
+            navigate('/login');
+        }
+    };
+
 
     return (
         <div className="sidebar p-4 pb-0">
@@ -50,8 +66,12 @@ const Sidebar = ({ role }) => {
             </nav>
 
             <div className="absolute bottom-4 left-4 right-4">
-                <div className="nav-item cursor-pointer" style={{ color: 'var(--secondary)' }}>
-                    Logout
+                <div
+                    className="nav-item cursor-pointer"
+                    style={{ color: 'var(--secondary)' }}
+                    onClick={handleLogout}
+                >
+                    🚪 Logout
                 </div>
             </div>
         </div>

@@ -1,7 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/common/Login';
-import Register from './pages/common/Register';
+import Welcome from './pages/common/Welcome';
+import StudentRegister from './pages/common/StudentRegister';
+import TeacherRegister from './pages/common/TeacherRegister';
+import ForgotPassword from './pages/common/ForgotPassword';
+import ResetPassword from './pages/common/ResetPassword';
+import AdminLogin from './pages/common/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminStudents from './pages/admin/AdminStudents';
 import AdminTeachers from './pages/admin/AdminTeachers';
@@ -34,7 +39,12 @@ function App() {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/register/student" element={<StudentRegister />} />
+        <Route path="/register/teacher" element={<TeacherRegister />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+
 
         {/* Admin Routes */}
         <Route path="/admin/*" element={
@@ -73,7 +83,7 @@ function App() {
           </DashboardLayout>
         } />
 
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/" element={<Welcome />} />
       </Routes>
     </Router>
   );

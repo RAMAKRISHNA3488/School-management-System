@@ -6,5 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
+  },
+  resolve: {
+    dedupe: ['react', 'react-dom', 'react-router-dom']
   }
 })

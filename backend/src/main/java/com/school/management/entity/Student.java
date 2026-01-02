@@ -1,10 +1,6 @@
 package com.school.management.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -25,5 +21,23 @@ public class Student {
     @ManyToOne
     @JoinColumn(name = "class_id")
     private ClassRoom classRoom;
+
+    public Student() {
+
+    }
+
+    public Student(String firstName, String lastName, String email, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.isApproved = false;
+        this.classRoom = new ClassRoom();
+    }
+
+    public Long getId(Long id) {
+        return id;
+    }
+
 
 }

@@ -38,7 +38,6 @@ public class StudentController {
         student.setFirstName(studentDetails.getFirstName());
         student.setLastName(studentDetails.getLastName());
         student.setEmail(studentDetails.getEmail());
-        student.setGrade(studentDetails.getGrade());
 
         return studentRepository.save(student);
     }
